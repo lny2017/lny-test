@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function f1() {
+            var a = new Promise((resolve, reject) => {
+                resolve(1);
+            });
+            return a;
+        }
+
+        function f2() {
+            var b = new Promise((resolve, reject) => {
+                resolve(2);
+            });
+            return b;
+        }
+
+        function faa() {
+            // 这里必须return 
+            return f1().then(res => {
+                console.log(res);
+                var d = new Promise((resolve, reject) => {
+                    resolve(res + 6);
+                });
+                return d;
+            });
+        }
+        f2().then(res => {
+            console.log(res);
+        });
+
+        console.log(faa());
+        faa().then(res => {
+            console.log(res);
+        });
+    </script>
+
+</body>
+
+</html>
