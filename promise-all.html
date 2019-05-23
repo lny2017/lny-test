@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const a = new Promise((resolve, reject) => {
+            resolve('a');
+        });
+        let b = function(val) {
+            const bp = new Promise((resolve, reject) => {
+                resolve(val);
+            });
+            return bp;
+        }
+        const c = new Promise((resolve, reject) => {
+            resolve('c');
+        });
+
+
+        const d = function() {
+            let bb = this.b('lny');
+            Promise.all([this.a, bb, this.c]).then(res => {
+                console.log('dddd', res);
+            })
+        }
+
+        const obj = {
+            a,
+            b,
+            c,
+            d
+        }
+
+        obj.d();
+    </script>
+</body>
+
+</html>
