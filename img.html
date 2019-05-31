@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .wrapper {
+            width: 1040px;
+            margin: 80px auto;
+        }
+        
+        .imgList {
+            height: 200px;
+            /* overflow: hidden; */
+        }
+        
+        .imgItem {
+            float: left;
+            width: 200px;
+            height: 120px;
+            background: #09f;
+            border: 1px solid red;
+        }
+        
+        .imgItem:hover {
+            float: left;
+            width: 200px;
+            height: 120px;
+            background: #f90;
+            border: 1px solid red;
+            transform: scale(1.2) translateY(11px);
+        }
+        /* .imgItemActive {
+            float: left;
+            width: 200px;
+            height: 120px;
+            background: #f90;
+            border: 1px solid red;
+            transform: scale(1.2) translateY(11px);
+        } */
+        
+        .imgIndex {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .imgIndexItem {
+            width: 20px;
+            height: 20px;
+            background: #ddd;
+            display: inline-block;
+        }
+        
+        .imgIndexItemActive {
+            width: 40px;
+            height: 20px;
+            background: #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="imgList">
+            <div class="imgItem"></div>
+            <div class="imgItem"></div>
+            <div class="imgItem"></div>
+            <div class="imgItem"></div>
+            <div class="imgItem"></div>
+        </div>
+        <div class="imgIndex">
+            <div class="imgIndexItem"></div>
+            <div class="imgIndexItem"></div>
+            <div class="imgIndexItemActive"></div>
+            <div class="imgIndexItem"></div>
+            <div class="imgIndexItem"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
