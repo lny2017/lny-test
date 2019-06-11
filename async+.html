@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        async function aaa() {
+            const ap = new Promise((resolve, reject) => {
+                console.log('ap');
+                resolve('ap');
+            });
+
+            return ap;
+        }
+
+        async function bbb(a) {
+            const bp = new Promise((resolve, reject) => {
+                console.log('bp');
+                resolve(a + 'bp');
+            });
+
+            return bp;
+        }
+
+        async function ccc() {
+            const a = await aaa();
+            const b = await bbb(a);
+            return a + b;
+        }
+
+        ccc().then(res => {
+            console.log(res);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -25,7 +25,7 @@
 
 
         const d = function() {
-            let bb = this.b('lny');
+            let bb = this.b('lny'); // 在这里传参
             Promise.all([this.a, bb, this.c]).then(res => {
                 console.log('dddd', res);
             })
