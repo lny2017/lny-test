@@ -4,7 +4,7 @@ module.exports = function(req, res) {
     console.log(req.body.userName);
     console.log(req.body.password);
 
-    console.log(req);
+    // console.log(req);
     const timeTemp = timeObj.getTimeTemp();
 
     const userName = req.body.userName; // 请求的参数
