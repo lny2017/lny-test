@@ -1,7 +1,8 @@
-var timeObj = require('../../untils/time');
-// var mysql = require('mysql');
-var query = require("../../untils/pool");
+import { getTimeTemp } from '../../untils/time';
+import { query } from '../../untils/pool';
+import sql from '../sql';
 
+let { searchUser } = sql;
 
 module.exports = function(req, res) {
 
@@ -45,31 +46,40 @@ module.exports = function(req, res) {
 
     // });
 
-    query('select * from table_user').then(res => {
+    const timeTemp = getTimeTemp();
+
+    const name = req.body.userName; // 请求的参数
+
+    console.log(searchUser(name));
+
+    query(searchUser(name)).then(r => {
         //do something
-        console.log(res);
+        console.log(r);
+
+        // console.log(req);
+
+
+        // 删除多余的返回值
+        for (let i of r) {
+            delete i.timestamp
+        }
+
+        const resObj = {
+            code: 0,
+            data: r,
+            msg: "this is a post request",
+            timeTemp
+        };
+        res.json(resObj);
+
     }).catch(err => {
         console.log(err);
+        res.json({
+            code: 3,
+            msg: '接口异常',
+            timeTemp
+        });
     });
 
-    console.log(req.body.userName);
-    console.log(req.body.password);
 
-    // console.log(req);
-    const timeTemp = timeObj.getTimeTemp();
-
-    const userName = req.body.userName; // 请求的参数
-    const password = req.body.password;
-
-
-    const resObj = {
-        code: 200,
-        data: {
-            userName,
-            password
-        },
-        msg: "this is a post request",
-        timeTemp
-    };
-    res.json(resObj);
 }

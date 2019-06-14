@@ -32,4 +32,6 @@ var query = function(sql) {
     return p;
 };
 
-module.exports = query;
+export {
+    query
+}
