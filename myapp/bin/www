@@ -3,6 +3,9 @@
 /**
  * Module dependencies.
  */
+require('babel-register')({
+    presets: ['env']
+});
 
 var app = require('../server/app');
 var debug = require('debug')('myapp:server');
