@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // for...in 循环将遍历对象的所有可枚举属性。
+        Array.prototype.newArr = () => { };
+        Array.prototype.anotherNewArr = () => { };
+        const array = ['foo', 'bar', 'baz'];
+
+        for (const value in array) {
+            console.log(value);
+        }
+        // Outcome:
+        // 0
+        // 1
+        // 2
+        // newArr
+        // anotherNewArr
+
+        // tip: for...in 不仅枚举上面的数组声明，它还从构造函数的原型中查找继承的非枚举属性，在这个例子中，newArr 和 anotherNewArr 也会打印出来。
+
+
+        // for...of 更多用于特定于集合（如数组和对象），但不包括所有对象。
+        // 注意：任何具有 Symbol.iterator 属性的元素都是可迭代的。
+        Array.prototype.newArr = () => {};
+        const array = ['foo', 'bar', 'baz'];
+        
+        for (const value of array) { 
+        console.log(value);
+        }
+        // Outcome:
+        // foo
+        // bar
+        // baz
+        
+        // tip: for...in 不考虑构造函数原型的不可枚举属性。它只需要查找可枚举属性并将其打印出来。
+    </script>
+</body>
+
+</html>

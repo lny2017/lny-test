@@ -1,10 +1,10 @@
-import { getTimeTemp } from '../../untils/time';
-import { query } from '../../untils/pool';
-import sql from '../sql';
+import { query } from '../../untils/pool'; // 引入连接池
+import sql from '../sql'; // 引入sql；
+import { resFn } from '../../untils/baseRes'; // 引入基本的response方法
 
 let { searchUser } = sql;
 
-module.exports = function(req, res) {
+module.exports = function (req, res) {
 
 
     // 直接连接数据库
@@ -46,30 +46,24 @@ module.exports = function(req, res) {
 
     // });
 
-    const timeTemp = getTimeTemp();
 
-    const name = req.body.userName; // 请求的参数
+    const userName = req.body.userName; // 请求的参数 userName
 
-    console.log(searchUser(name));
+    console.log('我是sql：', searchUser(userName));
 
-    query(searchUser(name)).then(r => {
+    // 访问数据库读取数据
+    query(searchUser(userName)).then(r => {
         //do something
-        console.log(r);
-
-        // console.log(req);
-
+        console.log('r:', r);
 
         // 删除多余的返回值
         for (let i of r) {
             delete i.timestamp
         }
 
-        const resObj = {
-            code: 0,
-            data: r,
-            msg: "this is a post request",
-            timeTemp
-        };
+        // 设定返回参数并抛出res
+        const resObj = resFn({ code: 0, data: r, msg: 'this is a post request!' });
+        
         res.json(resObj);
 
     }).catch(err => {
